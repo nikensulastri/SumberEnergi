@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnergiZ: The Future is Now!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav id="navbar">
+            <div class="logo">EnergiZ ⚡</div>
+            <ul class="nav-links">
+                <li onclick="navigate('menu1')" class="active" id="nav-menu1">1. Misi</li>
+                <li onclick="navigate('menu2')" id="nav-menu2">2. Materi</li>
+                <li onclick="navigate('menu3')" id="nav-menu3">3. Lab</li>
+                <li onclick="navigate('menu4')" id="nav-menu4">4. Kuis</li>
+                <li onclick="navigate('menu5')" id="nav-menu5">5. Game</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="content">
+            <!-- Menu 1: Tujuan Pembelajaran -->
+            <section id="menu1" class="page active">
+                <div class="hero">
+                    <div class="hero-text">
+                        <div class="glitch-avatar">🤖 Fisio</div>
+                        <div class="chat-bubble">
+                            Halo, Sobat Energi! ⚡ Pernah nggak kepikiran, gimana caranya HP kamu bisa nyala seharian buat scrolling medsos, atau dari mana asalnya listrik yang bikin kamar kamu adem? Hari ini, kita bakal bongkar rahasianya! Siap jadi agent of change buat bumi kita? Let's go!
+                        </div>
+                        <div class="mission-box">
+                            <h2>🎯 Target Misi Kita Hari Ini:</h2>
+                            <ul>
+                                <li><strong>Menganalisis</strong> berbagai bentuk energi dan prinsip transformasinya dalam kehidupan sehari-hari.</li>
+                                <li><strong>Membedakan</strong> sumber energi terbarukan dan tak terbarukan beserta plus-minusnya.</li>
+                                <li><strong>Mengevaluasi</strong> dampak eksplorasi dan penggunaan energi terhadap kelestarian lingkungan sekitar.</li>
+                                <li><strong>Merancang</strong> solusi sederhana untuk mendukung transisi energi ramah lingkungan.</li>
+                            </ul>
+                        </div>
+                        <button class="btn-primary" onclick="navigate('menu2')">Accept Mission! 🚀</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu 2: Materi Ajar -->
+            <section id="menu2" class="page">
+                <div class="story-container">
+                    <div class="story-card active" id="story1">
+                        <h2>Apa itu Energi & Transformasinya?</h2>
+                        <div class="animation-box">☀️ Matahari ➡️ ⬛ Panel Surya ➡️ 🔋 Baterai ➡️ 📱 HP</div>
+                        <p>Bro, Sis, sadar nggak sih? Energi itu literally nggak bisa diciptakan atau dimusnahkan, dia cuma bisa "ganti baju" alias bertransformasi (Hukum Kekekalan Energi).</p>
+                        <p>Cahaya matahari yang silau tadi ditangkap panel surya, diubah jadi energi listrik, terus disimpen dalam bentuk energi kimia di baterai HP kamu. Magic? Bukan, ini Fisika!</p>
+                        <button class="btn-secondary" onclick="nextStory(2)">Next: Terus, energinya dari mana?</button>
+                    </div>
+                    
+                    <div class="story-card hidden" id="story2">
+                        <h2>Terbarukan vs Tak Terbarukan</h2>
+                        <div class="split-screen">
+                            <div class="split-left" onclick="showInfo('tak-terbarukan')">
+                                <h3>🏭 Tak Terbarukan</h3>
+                                <p>Tap di sini</p>
+                            </div>
+                            <div class="split-right" onclick="showInfo('terbarukan')">
+                                <h3>🍃 Terbarukan</h3>
+                                <p>Tap di sini</p>
+                            </div>
+                        </div>
+                        <div id="info-box" class="info-hidden">
+                            <p id="info-text"></p>
+                        </div>
+                        <br>
+                        <button class="btn-secondary" onclick="nextStory(3)">Next: Gimana di Indonesia?</button>
+                    </div>
+
+                    <div class="story-card hidden" id="story3">
+                        <h2>Tantangan Transisi Energi di Indonesia</h2>
+                        <div class="map-box">🗺️ Peta Potensi Energi Indonesia <br> 60%+ Listrik kita masih dari Batu Bara!</div>
+                        <p>Indonesia itu rich banget! Kita punya potensi panas bumi terbesar ke-2 di dunia dan supply matahari sepanjang tahun.</p>
+                        <p>Tapi... pindah dari batu bara ke energi bersih itu butuh biaya mahal dan teknologi canggih. Nah, di sinilah otak kreatif Gen-Z kayak kamu dibutuhin buat mikirin inovasinya!</p>
+                        <button class="btn-primary" onclick="navigate('menu3')">Lanjut ke Lab 🧪</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu 3: Virtual Lab -->
+            <section id="menu3" class="page">
+                <h2>Virtual Lab: Smart Solar Home</h2>
+                <p>Tarik panel surya ke atap, dan atur cuaca serta alat elektronik!</p>
+                <div class="lab-container">
+                    <div class="house-area">
+                        <div class="sky" id="lab-sky">☀️</div>
+                        <div class="roof" id="roof" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p>Tarik Panel Surya ke sini</p>
+                        </div>
+                        <div class="house-body">
+                            <div class="devices">
+                                <div id="lamp" class="device off">💡 Lampu</div>
+                                <div id="tv" class="device off">📺 TV</div>
+                                <div id="ac" class="device off">❄️ AC</div>
+                            </div>
+                        </div>
+                        <div class="battery-status">
+                            <div class="battery-bar">
+                                <div id="battery-level" style="width: 50%;"></div>
+                            </div>
+                            <p>Baterai: <span id="batt-text">50</span>%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="controls-area">
+                        <div class="inventory" id="inventory">
+                            <h3>Inventory</h3>
+                            <div class="item" draggable="true" ondragstart="drag(event)" id="panel">⬛ Panel Surya</div>
+                        </div>
+                        
+                        <div class="sliders">
+                            <h3>Kontrol</h3>
+                            <label>Cuaca (Mendung - Terik)</label>
+                            <input type="range" id="weather-slider" min="0" max="10" value="8" oninput="updateLab()">
+                            
+                            <label>Beban Listrik</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" id="check-lamp" onchange="updateLab()"> Lampu (50W)</label>
+                                <label><input type="checkbox" id="check-tv" onchange="updateLab()"> TV (150W)</label>
+                                <label><input type="checkbox" id="check-ac" onchange="updateLab()"> AC (800W)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard">
+                            <p>Daya Dihasilkan: <span id="power-gen">0</span> W</p>
+                            <p>Daya Digunakan: <span id="power-use">0</span> W</p>
+                            <p id="lab-feedback" class="feedback-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu 4: Kuis -->
+            <section id="menu4" class="page">
+                <h2>Energy Boss Fight 👾</h2>
+                <div class="quiz-container">
+                    <div class="battle-arena">
+                        <div class="player">
+                            <div class="hp-bar"><div id="player-hp" style="width: 100%;"></div></div>
+                            <div class="avatar">🧑‍🚀 Kamu</div>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="monster">
+                            <div class="hp-bar"><div id="monster-hp" style="width: 100%;"></div></div>
+                            <div class="avatar" id="monster-avatar">☁️ Smog-Zilla</div>
+                        </div>
+                    </div>
+                    
+                    <div class="question-box" id="question-box">
+                        <p id="question-text">Loading...</p>
+                        <div id="options-container" class="options"></div>
+                    </div>
+                    
+                    <div id="quiz-feedback" class="info-hidden">
+                        <p id="quiz-feedback-text"></p>
+                        <button class="btn-primary" id="next-q-btn" onclick="nextQuestion()">Soal Selanjutnya</button>
+                    </div>
+                    
+                    <div id="quiz-end" class="info-hidden">
+                        <h3 id="quiz-result"></h3>
+                        <button class="btn-primary" onclick="initQuiz()">Main Lagi</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu 5: Game -->
+            <section id="menu5" class="page">
+                <h2>City Power: The Mayor's Dilemma</h2>
+                <div class="game-container">
+                    <div class="game-dashboard">
+                        <div class="stat-box">
+                            <p>💰 Budget</p>
+                            <h3>$<span id="game-budget">10000</span></h3>
+                        </div>
+                        <div class="stat-box">
+                            <p>⚡ Power Demand</p>
+                            <div class="prog-bar"><div id="power-prog" style="width: 0%; background: var(--cyan);"></div></div>
+                            <p><span id="game-power">0</span> / 1000 MW</p>
+                        </div>
+                        <div class="stat-box">
+                            <p>🏭 Pollution Index</p>
+                            <div class="prog-bar"><div id="poll-prog" style="width: 0%; background: #ff4757;"></div></div>
+                            <p><span id="game-poll">0</span> / 100</p>
+                        </div>
+                    </div>
+                    
+                    <div class="city-map" id="city-map">
+                        <div class="slot" id="slot-0" onclick="placePlant(0)">+</div>
+                        <div class="slot" id="slot-1" onclick="placePlant(1)">+</div>
+                        <div class="slot" id="slot-2" onclick="placePlant(2)">+</div>
+                        <div class="slot" id="slot-3" onclick="placePlant(3)">+</div>
+                        <div class="slot" id="slot-4" onclick="placePlant(4)">+</div>
+                        <div class="slot" id="slot-5" onclick="placePlant(5)">+</div>
+                    </div>
+                    
+                    <p style="text-align:center; margin-top:10px;">Pilih kartu di bawah, lalu klik kotak "+" di kota untuk membangun.</p>
+                    
+                    <div class="cards-area">
+                        <div class="card" id="card-pltu" onclick="selectCard('pltu')">
+                            <h4>🏭 PLTU Batu Bara</h4>
+                            <p>-$2000 | +500MW | Polusi +40</p>
+                        </div>
+                        <div class="card" id="card-plts" onclick="selectCard('plts')">
+                            <h4>☀️ PLTS (Surya)</h4>
+                            <p>-$3500 | +250MW | Polusi +0</p>
+                        </div>
+                        <div class="card" id="card-pltb" onclick="selectCard('pltb')">
+                            <h4>💨 PLTB (Angin)</h4>
+                            <p>-$3000 | +150MW | Polusi +0</p>
+                        </div>
+                        <div class="card" id="card-geo" onclick="selectCard('geo')">
+                            <h4>🌋 Geothermal</h4>
+                            <p>-$6000 | +400MW | Polusi +0</p>
+                        </div>
+                    </div>
+                    <div id="game-message" class="info-hidden" style="margin-top:20px; text-align:center; padding:15px; border-radius:8px;"></div>
+                    <div style="text-align:center; margin-top:15px;">
+                        <button class="btn-secondary" onclick="initGame()">Reset Kota</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
